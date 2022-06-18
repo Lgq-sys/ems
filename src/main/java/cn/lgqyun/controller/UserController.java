@@ -34,7 +34,7 @@ public class UserController {
     @RequestMapping("logout")
     public String logout(HttpSession session){
         session.invalidate(); //session失效
-        return "redirect:/employee/lists";//跳转到登录界面
+        return "redirect:/login";//跳转到登录界面
     }
 
     /**

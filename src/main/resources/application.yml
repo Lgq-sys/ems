@@ -1,0 +1,42 @@
+server:
+  port: 9292   #配置启动端口号
+  servlet:
+    context-path: /aa  #配置启动项目名
+
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  servlet:
+    multipart: #设置上传文件大小
+      enabled: true
+      max-file-size: 20MB #设置单个文件的大小
+      max-request-size: 20MB #设置单次请求的文件的总大小
+
+
+  datasource:
+    name: test  #数据库名
+    url: jdbc:mysql://localhost:3306/dev?useSSL=false&characterEncoding=UTF-8 #url
+    username: root  #用户名
+    password: root  #密码
+    driver-class-name: com.mysql.jdbc.Driver  #数据库链接驱动
+
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${photo.file.dir} #暴露哪些资源可以通过项目名访问
+
+mybatis:
+  mapper-locations: classpath:com/lgqyun/mapper/*.xml
+  type-aliases-package: cn.lgqyun.entity
+
+# 日志配置
+logging:
+  level:
+    root: info
+    com.baizhi: debug
+
+# 指定文件上传位置
+photo:
+  file:
+    dir: F:/myGit/ems/src/main/resources/static/img
